@@ -5,9 +5,9 @@ public class Funs {
             if (meowables[i] instanceof Cat) {
                 Cat cat = (Cat) meowables[i];
                 for (int j = 0; j < meowTimes; j++) {
-                    cat.meow(); // Мяукаем указанное количество раз
+                    cat.meow(); //Мяукаем указанное количество раз
                 }
-                meowCounts[i] = cat.getMeowCount(); // Получаем количество мяуканий
+                meowCounts[i] = cat.getMeowCount(); //Получаем количество мяуканий
             }
         }
         return meowCounts;
