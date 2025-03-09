@@ -15,7 +15,7 @@ public class Main {
         return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     }
 
-    // Метод для проверки, является ли строка числом
+    //Метод для проверки, является ли строка числом
     private static boolean isNumeric(String str) {
         if (str == null || str.isEmpty()) {
             return false;
@@ -141,7 +141,7 @@ public class Main {
 
         try {
             //Чтение файла
-            File file = new File("C:\\Users\\yadan\\IdeaProjects\\lab5\\src\\input.txt"); //Укажите путь к файлу
+            File file = new File("C:\\Users\\yadan\\IdeaProjects\\lab5\\src\\input.txt");
             Scanner scanner1 = new Scanner(file);
 
             //Обработка текста
@@ -149,7 +149,7 @@ public class Main {
                 String line = scanner1.nextLine();
                 for (char c : line.toCharArray()) {
                     if (voicedConsonants.contains(c)) {
-                        uniqueSonorous.add(Character.toLowerCase(c)); //Добавляем в нижнем регистре
+                        uniqueSonorous.add(Character.toLowerCase(c)); //Добавление в нижний регистр
                     }
                 }
             }
@@ -196,7 +196,7 @@ public class Main {
                 new Point(1, -2),
                 new Point(3, 4),
                 new Point(2, 3),
-                new Point(1, -2), //Дубликат
+                new Point(1, -2),
                 new Point(-1, 5),
                 new Point(0, 0)
         );
@@ -219,27 +219,26 @@ public class Main {
         System.out.println("\n\nЗадание 7.2\n");
 
         try {
-            // Чтение файла
-            File file = new File("C:\\Users\\yadan\\IdeaProjects\\lab5\\src\\input1.txt"); // Укажите путь к файлу
+            //Чтение файла
+            File file = new File("C:\\Users\\yadan\\IdeaProjects\\lab5\\src\\input1.txt");
             Scanner scanner1 = new Scanner(file);
 
-            // Обработка строк
+            //Обработка строк
             Map<Integer, List<String>> groupedNames = scanner1
-                    .useDelimiter("\n") // Разделитель строк
-                    .tokens() // Получаем поток строк
-                    .map(line -> line.trim().split("\\s*:\\s*")) // Разделяем строку на имя и номер, удаляя пробелы вокруг разделителя
-                    .filter(parts -> parts.length == 2 && !parts[1].isEmpty() && isNumeric(parts[1])) // Убираем строки без номера и некорректные номера
+                    .useDelimiter("\n") //Разделитель строк
+                    .tokens() //Получаем поток строк
+                    .map(line -> line.trim().split("\\s*:\\s*")) //Разделяем строку на имя и номер, удаляя пробелы вокруг разделителя
+                    .filter(parts -> parts.length == 2 && !parts[1].isEmpty() && isNumeric(parts[1])) //Убираем строки без номера и некорректные номера
                     .collect(Collectors.groupingBy(
-                            parts -> Integer.parseInt(parts[1]), // Группируем по номеру
+                            parts -> Integer.parseInt(parts[1]), //Группируем по номеру
                             Collectors.mapping(
-                                    parts -> capitalize(parts[0]), // Приводим имя к нужному формату
+                                    parts -> capitalize(parts[0]), //Приводим имя к нужному формату
                                     Collectors.toList()
                             )
                     ));
 
             scanner.close();
 
-            // Вывод результата
             System.out.println("Результат группировки: " + groupedNames);
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
